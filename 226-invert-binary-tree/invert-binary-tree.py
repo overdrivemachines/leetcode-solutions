@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def invertTreeWithoutRecursion(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root is None:
             return None
 
@@ -22,6 +22,17 @@ class Solution:
                 nodes.append(node.left)
             if node.right is not None:
                 nodes.append(node.right)
+
+        return root
+
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+        self.invertTree(root.left)
+        self.invertTree(root.right)
 
         return root
 
