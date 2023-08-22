@@ -1,5 +1,5 @@
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
+    def removeElement_old(self, nums: List[int], val: int) -> int:
         count = 0
         # print("nums:", nums, "val:", val)
 
@@ -30,3 +30,11 @@ class Solution:
         # print("nums: ", nums)
 
         return count
+
+    def removeElement(self, nums: List[int], val: int) -> int:
+        index = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[index] = nums[i]
+                index += 1
+        return index
